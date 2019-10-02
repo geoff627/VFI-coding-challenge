@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500&display=swap');
+
+:root,
+html,
+body {
+	display: flex;
+	justify-content: center;
+	font-family: 'Raleway', sans-serif;
+	font-size: 16px;
+}
+
+h1 {
+	font-size: 2.25rem;
+	margin: 0 0 1rem 0;
+}
+
+h2 {
+	font-size: 2rem;
+	margin: 0 0 .75rem 0;
+}
+
+h3 {
+	font-size: 1.75rem;
+	margin: 0 0 .75rem 0;
+}
+
+h4 {
+	font-size: 1.5rem;
+	margin: 0 0 .5rem 0;
+}
+
+h5 {
+	font-size: 1.25rem;
+	margin: 0 0 .5rem 0;
+}
+
+h6 {
+	font-size: 1.1rem;
+	margin: 0 0 .5rem 0;
+}
+
+label {
+	font-size: .85em;
+}
+
+input {
+	outline: none;
+	border: none;
+}
+
+/** Color Palette CSS Variables **/
+:root {
+  --annot-color-primary: #0061B0;
+  --annot-color-primary-rgb: 0,97,176;
+  --annot-color-primary-contrast: #ffffff;
+  --annot-color-primary-contrast-rgb: 255,255,255;
+  --annot-color-primary-shade: #00559b;
+  --annot-color-primary-tint: #1a71b8;
+
+  --annot-color-secondary: #171CE3;
+  --annot-color-secondary-rgb: 23,28,227;
+  --annot-color-secondary-contrast: #ffffff;
+  --annot-color-secondary-contrast-rgb: 255,255,255;
+  --annot-color-secondary-shade: #1419c8;
+  --annot-color-secondary-tint: #2e33e6;
+
+  --annot-color-tertiary: #E35A17;
+  --annot-color-tertiary-rgb: 227,90,23;
+  --annot-color-tertiary-contrast: #ffffff;
+  --annot-color-tertiary-contrast-rgb: 255,255,255;
+  --annot-color-tertiary-shade: #c84f14;
+  --annot-color-tertiary-tint: #e66b2e;
+
+  --annot-color-success: #3AB549;
+  --annot-color-success-rgb: 58,181,73;
+  --annot-color-success-contrast: #000000;
+  --annot-color-success-contrast-rgb: 0,0,0;
+  --annot-color-success-shade: #339f40;
+  --annot-color-success-tint: #4ebc5b;
+
+  --annot-color-warning: #ffce00;
+  --annot-color-warning-rgb: 255,206,0;
+  --annot-color-warning-contrast: #ffffff;
+  --annot-color-warning-contrast-rgb: 255,255,255;
+  --annot-color-warning-shade: #e0b500;
+  --annot-color-warning-tint: #ffd31a;
+
+  --annot-color-danger: #E35A17;
+  --annot-color-danger-rgb: 227,90,23;
+  --annot-color-danger-contrast: #ffffff;
+  --annot-color-danger-contrast-rgb: 255,255,255;
+  --annot-color-danger-shade: #c84f14;
+  --annot-color-danger-tint: #e66b2e;
+
+  --annot-color-dark: #222428;
+  --annot-color-dark-rgb: 34,34,34;
+  --annot-color-dark-contrast: #ffffff;
+  --annot-color-dark-contrast-rgb: 255,255,255;
+  --annot-color-dark-shade: #1e2023;
+  --annot-color-dark-tint: #383a3e;
+
+  --annot-color-medium: #989aa2;
+  --annot-color-medium-rgb: 152,154,162;
+  --annot-color-medium-contrast: #ffffff;
+  --annot-color-medium-contrast-rgb: 255,255,255;
+  --annot-color-medium-shade: #86888f;
+  --annot-color-medium-tint: #a2a4ab;
+
+  --annot-color-light: #f4f5f8;
+  --annot-color-light-rgb: 244,244,244;
+  --annot-color-light-contrast: #000000;
+  --annot-color-light-contrast-rgb: 0,0,0;
+  --annot-color-light-shade: #d7d8da;
+  --annot-color-light-tint: #f5f6f9;
+
+	/** fonts **/
+	--web-default-font: "Lucida Grande", Tahoma, Geneva, Verdana, sans-serif;
+
+	background-color: var(--annot-color-light-shade);
+}
+
+.default-button {
+	margin: 0;
+	border: none;
+	border-radius: .1rem;
+	padding: .7rem .5rem;
+	outline: none;
+	background-color: #ccc;
+	font-size: .8rem;
+	box-shadow: 0 1px 3px rgb(46, 46, 46);
+	transition: all 0.25s ease;
+}
+
+.default-button:active {
+	padding: .68rem .48rem;
+	box-shadow: none;
+	font-size: .75rem;
+}
