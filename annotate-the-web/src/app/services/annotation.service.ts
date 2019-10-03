@@ -10,6 +10,7 @@ export class AnnotationService {
 	listOfAnnotations: Array<Annotation> = [];
 	private annotationListSubject = new BehaviorSubject<Array<Annotation>>([]);
 	annotationListChanges$ = this.annotationListSubject.asObservable();
+	
 	constructor() {
 		if(!this.listOfAnnotations || this.listOfAnnotations.length === 0) {
 			this.listOfAnnotations = this.getAnnotationListFromLocalStorage();

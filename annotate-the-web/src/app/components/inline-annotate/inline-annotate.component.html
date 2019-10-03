@@ -4,7 +4,7 @@
 	</div>
 	<div class="inline-annotate-add-note-container" *ngIf="showAddNote">
 			<form [formGroup]="addAnnotationForm" (ngSubmit)="addAnnotationNote()">
-				<label for="note">Add Annotation Note</label>
+				<label for="note">Add Annotation</label>
 				<textarea formControlName="note"></textarea>
 				<button type="submit" [disabled]="!addAnnotationForm.valid">ADD</button>
 			</form>

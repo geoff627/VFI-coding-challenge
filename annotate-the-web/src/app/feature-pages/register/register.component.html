@@ -4,17 +4,19 @@
 			<h3>Register</h3>
 			<h6>Sign up below</h6>
 			<div class="edit-annotation-form-container">
-				<form class="generic" [formGroup]="registerForm" (keyup.enter)="register()">
+				<form class="generic register-form" [formGroup]="registerForm" (keyup.enter)="register()">
 					<div>
 						<label for="annotation">Email</label>
-						<input formControlName="email">
+						<input formControlName="email" autofocus>
+						<p class="invalid-form-control-message" *ngIf="showAlreadyExistsError">This email is already taken.</p>
 					</div>
 					<div>
 						<label for="annotation">Password</label>
 						<input type="password" formControlName="password">
+						<p class="invalid-form-control-message" *ngIf="showInvalidFormMessage">Please fix your entries.</p>
 					</div>
 					<div class="form-buttons-container">
-						<button type="submit" (click)="register()">Register</button>
+						<button type="submit" (click)="register()" [disabled]="!registerForm.valid || !registerForm.touched">Register</button>
 					</div>
 				</form>
 			</div>

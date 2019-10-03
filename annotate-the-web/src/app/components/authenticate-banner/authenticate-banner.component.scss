@@ -1,0 +1,18 @@
+.authenticate-banner {
+	padding: 1rem;
+	background-color: #fff;
+	box-shadow: 0 3px 5px var(--annot-color-medium-tint);
+
+	.submenu-list-container {
+		margin: 1em 0 0 0;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+
+	.logout-item {
+		color: var( --annot-color-secondary-tint);
+		text-decoration: underline;
+		cursor: pointer;
+	}
+}

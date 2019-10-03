@@ -151,7 +151,7 @@ form.generic {
 
 	input {
 		margin: .75em 0 1em 0;
-		padding: .25em;
+		padding: .6em .3em;
 		width: 80%;
 		border: none;
 		background-color: #fff;
@@ -172,6 +172,18 @@ form.generic {
 		outline: none;
 		font-size: .8em;
 		resize: none;
+	}
+
+	p.invalid-form-control-message {
+		margin: .25em 0 1.7em 0;
+		color: var( --annot-color-danger);
+		font-size: .9em;
+	}
+
+	.form-error-messages {
+		margin: .25em 0 1.7em 0;
+		color: var( --annot-color-danger);
+		font-size: .9em;
 	}
 
 	.form-buttons-container {
@@ -198,5 +210,10 @@ form.generic {
 		button:active {
 			box-shadow: none;
 		}
+	}
+
+	.form-links-container {
+		margin: 2rem 0 0 0;
+		font-size: .8em;
 	}
 }

@@ -1,0 +1,9 @@
+<div class="authenticate-banner">
+	<h5 *ngIf="!isUserLoggedIn">Please login so you can keep your changes.</h5>
+	<h5 *ngIf="isUserLoggedIn">Welcome back.</h5>
+	<ul class="submenu-list-container">
+		<li *ngIf="!isUserLoggedIn"><a [routerLink]="['/login']">Login</a></li>
+		<li *ngIf="!isUserLoggedIn"><a [routerLink]="['/register']">Register</a></li>
+		<li class="logout-item" *ngIf="isUserLoggedIn" (click)="handleLogoutClick()">Logout</li>
+	</ul>
+</div>

@@ -4,17 +4,24 @@
 			<h3>Login</h3>
 			<h6>Enter your credentials below</h6>
 			<div class="edit-annotation-form-container">
-				<form class="generic" [formGroup]="loginForm" (keyup.enter)="login()">
+				<form class="generic login-form" [formGroup]="loginForm" (keyup.enter)="login()">
 					<div>
-						<label for="annotation">Email</label>
+						<label for="annotation" autofocus>Email</label>
 						<input formControlName="email">
 					</div>
 					<div>
 						<label for="annotation">Password</label>
 						<input type="password" formControlName="password">
+						<p class="invalid-form-control-message" *ngIf="showInvalidFormMessage">Please fix your credentials.</p>
 					</div>
 					<div class="form-buttons-container">
-						<button type="submit" (click)="login()">Login</button>
+						<button type="submit" (click)="login()" [disabled]="!loginForm.valid || !loginForm.touched">Login</button>
+					</div>
+					<div class="form-error-messages">
+						<p class="invalid-form-control-message" *ngIf="showLoginError">Invalid credentials.</p>
+					</div>
+					<div class="form-links-container">
+						<a [routerLink]="['/reset-password']">Forgot Password</a>
 					</div>
 				</form>
 			</div>
