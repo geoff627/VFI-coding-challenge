@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,500&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 :root,
 html,
@@ -113,6 +114,7 @@ input {
   --annot-color-light-shade: #d7d8da;
   --annot-color-light-tint: #f5f6f9;
 
+	--annot-color-button: rgba(0,97,176, .7);
 	/** fonts **/
 	--web-default-font: "Lucida Grande", Tahoma, Geneva, Verdana, sans-serif;
 

@@ -1,5 +1,6 @@
 .annotate-container {
 	padding: 1rem;
+	position: relative;
 	background-color: #fff;
 
 	h6 {
@@ -10,6 +11,19 @@
 	p {
 		margin: 0 0 1rem 0;
 		line-height: 1.25rem;
+	}
+
+	#inline-annotation-control {
+		position: absolute;
+		top: 0;
+		left: 40;
+		z-index: 10;
+		animation: fadein .7s;
+	}
+
+	@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 	}
 }
 

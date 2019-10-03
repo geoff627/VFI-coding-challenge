@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ComponentModule } from '../components/component.module'
 import { HomeComponent } from './home/home.component';
-import { AnnotatorComponent } from './../components/annotator/annotator.component';
+// import { AnnotatorComponent } from './../components/annotator/annotator.component';
 
 const routes: Routes = [
 	{
@@ -24,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [HomeComponent, AnnotatorComponent],
+  declarations: [HomeComponent],
   imports: [
 		CommonModule,
 		RouterModule.forChild(routes),

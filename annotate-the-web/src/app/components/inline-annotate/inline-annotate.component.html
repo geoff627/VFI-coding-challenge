@@ -1,0 +1,12 @@
+<div class="inline-annotate-control" >
+	<div class="inline-annotate-bubble" *ngIf="!showAddNote" title="Add Annotation" (click)="handleBubbleClick()">
+		<i class="material-icons">textsms</i>
+	</div>
+	<div class="inline-annotate-add-note-container" *ngIf="showAddNote">
+			<form [formGroup]="addAnnotationForm" (ngSubmit)="addAnnotationNote()">
+				<label for="note">Add Annotation Note</label>
+				<textarea formControlName="note"></textarea>
+				<button type="submit" [disabled]="!addAnnotationForm.valid">ADD</button>
+			</form>
+		</div>
+</div>

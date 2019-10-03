@@ -1,0 +1,71 @@
+	.inline-annotate-control {
+		.inline-annotate-bubble {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: .3em;
+			width: 60px;
+			height: 2em;
+			background-color: #fff;
+			box-shadow: 0 3px 4px #ccc;
+			border-radius: 2em 2em 2em 0;
+			transition: all 0.25s ease;
+			cursor: pointer;
+		}
+
+		.inline-annotate-bubble:active {
+			box-shadow: 0 .5px 1px #ccc;
+		}
+
+		.inline-annotate-add-note-container {
+			display: flex;
+			flex-direction: column;
+			padding: .5em;
+			width: 225px;
+			height: 145px;
+			background-color: var(--annot-color-light-shade);
+			border-radius: 3px;
+			box-shadow: 0 3px 4px #ccc;
+			transition: all 0.25s ease;
+
+			form {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+
+				label {
+					font-weight: 500;
+				}
+
+				textarea {
+					margin: .75em 0 0 0;
+					padding: .25em;
+					width: 80%;
+					height: 75px;
+					border: none;
+					background-color: #fff;
+					box-shadow: 0 3px 4px #ccc;
+					outline: none;
+					font-size: .8em;
+					resize: none;
+				}
+
+				button {
+					margin: .75em 0 0 0;
+					width: 3rem;
+					height: 2rem;
+					outline: none;
+					background-color: var(--annot-color-button);
+					box-shadow: 0 3px 4px #ccc;
+					color: #fff;
+					font-weight: 500;
+					cursor: pointer;
+				}
+
+				button:active {
+					box-shadow: none;
+				}
+			}
+		}
+
+	}

@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { debounceTime, filter, map } from "rxjs/operators";
+import { debounceTime, filter, map, tap, delay } from "rxjs/operators";
 import { Annotation } from './annotation.model';
+import { AnnotationService } from '../../services/annotation.service';
 
 @Component({
   selector: 'app-annotator',
@@ -9,15 +10,16 @@ import { Annotation } from './annotation.model';
   styleUrls: ['./annotator.component.scss']
 })
 export class AnnotatorComponent implements OnInit, AfterViewInit {
+	currentAnnotation: Annotation;
 	enabledClass = 'annotate-enabled';
-	@ViewChild('annotator') annotatorElem: ElementRef;
-  constructor() { }
+	showAddAnnotationControl = false;
+
+  constructor(private annotationSvc: AnnotationService) { }
 
   ngOnInit() {
-	}
+  }
 
 	ngAfterViewInit(): void {
-		this.annotatorElem.nativeElement;
 		fromEvent(document, 'selectionchange').pipe(
 			debounceTime(1500), //only listen after the user has selected and paused
 			map(e => document.getSelection()),
@@ -26,16 +28,39 @@ export class AnnotatorComponent implements OnInit, AfterViewInit {
 				return !className ? false : className.includes(this.enabledClass); //only continue if the highlighted text has the annotation enabled class
 			}),
 			map(selection => {
+				const {anchorNode: {parentElement}} = selection;
 				return {
+					id: new Date().getUTCSeconds(),
 					selectedText: selection.anchorNode.textContent.substring(
 						selection.focusOffset,
-						selection.anchorOffset)
+						selection.anchorOffset),
+					topPosition: parentElement.offsetTop,
+					leftPosition: parentElement.offsetLeft,
+					date: new Date()
 				} as Annotation;
-			})
+			}),
+			filter((selectedAnnotation: Annotation) => !!selectedAnnotation.selectedText),
+			tap(a => {
+				this.showAddAnnotationControl = true;
+			}),
+			delay(60)
 		).subscribe((annotation: Annotation) => {
-				const annot = annotation;
-
+				this.currentAnnotation = annotation;
+				const annotateCtrl = document.getElementById('inline-annotation-control');
+				annotateCtrl.style.left = `${annotation.leftPosition + 20}px`;
+				annotateCtrl.style.top = `${annotation.topPosition}px`;
 			});
+	}
+
+	handleAddAnnotationClick(annotationNote: string) {
+		this.currentAnnotation.annotation = annotationNote;
+		this.annotationSvc.addAnnotation(this.currentAnnotation);
+		this.resetUi();
+	}
+
+	resetUi() {
+		this.showAddAnnotationControl = false;
+		this.currentAnnotation = null;
 	}
 
 }
