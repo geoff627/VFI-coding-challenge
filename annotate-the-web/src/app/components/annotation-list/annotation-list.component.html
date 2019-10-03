@@ -1,0 +1,4 @@
+<div class="annotation-list-container">
+	<h5 *ngIf="listOfAnnotations.length > 0">List of Annotations</h5>
+	<p class="annotation-item" *ngFor="let annotation of listOfAnnotations" (click)="handleAnnotationClick(annotation)">{{annotation.selectedText}}</p>
+</div>

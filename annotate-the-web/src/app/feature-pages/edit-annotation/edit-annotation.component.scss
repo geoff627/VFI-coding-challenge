@@ -1,0 +1,97 @@
+.edit-annotation-container {
+	display: flex;
+
+	.text-content-container {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+
+		h6 {
+			margin: 1rem 0 1rem 0;
+		}
+
+		.edit-annotation-form-container {
+			align-self: center;
+			display: flex;
+			flex-direction: column;
+			width: 70%;
+
+			form {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin: 2rem 0 0 0;
+
+				label {
+					font-weight: 500;
+				}
+
+				textarea {
+					margin: .75em 0 0 0;
+					padding: .25em;
+					width: 80%;
+					height: 75px;
+					border: none;
+					background-color: #fff;
+					box-shadow: 0 3px 4px #ccc;
+					outline: none;
+					font-size: .8em;
+					resize: none;
+				}
+
+				.form-buttons-container {
+					display: flex;
+					justify-content: space-around;
+					width: 75%;
+
+					button {
+						margin: .75em 0 0 0;
+						width: 4rem;
+						height: 2rem;
+						outline: none;
+						background-color: var(--annot-color-button);
+						box-shadow: 0 3px 4px #ccc;
+						color: #fff;
+						font-weight: 500;
+						cursor: pointer;
+					}
+
+					button.delete-button {
+						background-color: var(--annot-color-warning-shade);
+					}
+
+					button:active {
+						box-shadow: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 960px) {
+	.edit-annotation-container {
+		.text-content-container {
+			padding: 2rem;
+
+			h1 {
+				margin: 0 0 2rem 0;
+			}
+
+			h3 {
+				margin: 0 0 1.5rem 0;
+			}
+
+			h6 {
+				align-self: center;
+				margin: 3rem 0 3rem 0;
+				width: 50%;
+			}
+
+			.edit-annotation-form-container {
+				align-self: center;
+				width: 60%;
+			}
+		}
+	}
+}

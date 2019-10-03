@@ -1,0 +1,17 @@
+.annotation-list-container {
+	display: flex;
+	flex-direction: column;
+	margin: 0 0 0 2rem;
+	transition: all 0.75s ease;
+
+	.annotation-item {
+		margin: 0 0 .5rem 0;
+		border-bottom: 1px solid #ccc;
+		padding: .25em 0;
+		width: 150px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		cursor: pointer;
+	}
+}

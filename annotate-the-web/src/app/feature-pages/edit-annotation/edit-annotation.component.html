@@ -1,0 +1,20 @@
+<div class="edit-annotation-container">
+	<div class="text-content-container">
+		<h1>Annotate The Web</h1>
+		<h3>Edit This Annotation</h3>
+		<h6>Update the text of the annotation below.</h6>
+		<div class="edit-annotation-form-container">
+			<p *ngIf="this.annotationToEdit.selectedText">Selected Text: {{this.annotationToEdit.selectedText}}</p>
+			<form [formGroup]="editAnnotationForm" (keyup.enter)="saveEdit()">
+				<div>
+					<label for="annotation">Annotation Text</label>
+					<textarea formControlName="annotation"></textarea>
+				</div>
+				<div class="form-buttons-container">
+					<button class="delete-button" (click)="handleDelete()">DELETE</button>
+					<button type="submit" (click)="saveEdit()">EDIT</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
