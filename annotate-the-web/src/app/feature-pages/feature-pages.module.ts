@@ -6,7 +6,9 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { ComponentModule } from '../components/component.module'
 import { HomeComponent } from './home/home.component';
 import { EditAnnotationComponent } from './edit-annotation/edit-annotation.component';
-// import { AnnotatorComponent } from './../components/annotator/annotator.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
 	{
@@ -16,6 +18,18 @@ const routes: Routes = [
 	{
 		path: ":id/edit",
 		component: EditAnnotationComponent,
+	},
+	{
+		path: "login",
+		component: LoginComponent,
+	},
+	{
+		path: "register",
+		component: RegisterComponent,
+	},
+	{
+		path: "reset-password",
+		component: ResetPasswordComponent,
 	},
 	{
 		path: "",
@@ -30,7 +44,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [HomeComponent, EditAnnotationComponent],
+  declarations: [HomeComponent, EditAnnotationComponent, LoginComponent, RegisterComponent, ResetPasswordComponent],
   imports: [
 		CommonModule,
 		RouterModule.forChild(routes),

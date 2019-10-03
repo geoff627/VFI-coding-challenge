@@ -138,3 +138,65 @@ input {
 	box-shadow: none;
 	font-size: .75rem;
 }
+
+form.generic {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 2rem 0 0 0;
+
+	label {
+		font-weight: 500;
+	}
+
+	input {
+		margin: .75em 0 1em 0;
+		padding: .25em;
+		width: 80%;
+		border: none;
+		background-color: #fff;
+		box-shadow: 0 3px 4px #ccc;
+		outline: none;
+		font-size: .8em;
+		resize: none;
+	}
+
+	textarea {
+		margin: .75em 0 0 0;
+		padding: .25em;
+		width: 80%;
+		height: 75px;
+		border: none;
+		background-color: #fff;
+		box-shadow: 0 3px 4px #ccc;
+		outline: none;
+		font-size: .8em;
+		resize: none;
+	}
+
+	.form-buttons-container {
+		display: flex;
+		justify-content: space-around;
+		width: 75%;
+
+		button {
+			margin: .75em 0 0 0;
+			width: 4rem;
+			height: 2rem;
+			outline: none;
+			background-color: var(--annot-color-button);
+			box-shadow: 0 3px 4px #ccc;
+			color: #fff;
+			font-weight: 500;
+			cursor: pointer;
+		}
+
+		button.delete-button {
+			background-color: var(--annot-color-warning-shade);
+		}
+
+		button:active {
+			box-shadow: none;
+		}
+	}
+}

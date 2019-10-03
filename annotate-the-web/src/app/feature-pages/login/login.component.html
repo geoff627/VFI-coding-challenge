@@ -1,0 +1,22 @@
+<div class="edit-annotation-container">
+		<div class="text-content-container">
+			<h1>Annotate The Web</h1>
+			<h3>Login</h3>
+			<h6>Enter your credentials below</h6>
+			<div class="edit-annotation-form-container">
+				<form class="generic" [formGroup]="loginForm" (keyup.enter)="login()">
+					<div>
+						<label for="annotation">Email</label>
+						<input formControlName="email">
+					</div>
+					<div>
+						<label for="annotation">Password</label>
+						<input type="password" formControlName="password">
+					</div>
+					<div class="form-buttons-container">
+						<button type="submit" (click)="login()">Login</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
