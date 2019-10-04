@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateService } from '../../services/authenticate.service';
+import { AnnotationService } from 'src/app/services/annotation.service';
 
 @Component({
   selector: 'app-authenticate-banner',
@@ -9,7 +10,7 @@ import { AuthenticateService } from '../../services/authenticate.service';
 export class AuthenticateBannerComponent implements OnInit {
 	isUserLoggedIn = false;
 	currentUserEmail = '';
-  constructor(private authSvc: AuthenticateService) { }
+  constructor(private authSvc: AuthenticateService, private annotateSvc: AnnotationService) { }
 
   ngOnInit() {
 		this.authSvc.userEmailChange$
@@ -21,6 +22,7 @@ export class AuthenticateBannerComponent implements OnInit {
 
 	handleLogoutClick() {
 		this.authSvc.logout();
+		this.annotateSvc.clearInMemoryAnnotations();
 	}
 
 }

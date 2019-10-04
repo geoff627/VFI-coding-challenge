@@ -4,7 +4,7 @@
 		<h3>Edit This Annotation</h3>
 		<h6>Update the text of the annotation below.</h6>
 		<div class="edit-annotation-form-container">
-			<p *ngIf="this.annotationToEdit.selectedText">Selected Text: {{this.annotationToEdit.selectedText}}</p>
+			<p *ngIf="this.annotationToEdit && this.annotationToEdit.selectedText">Selected Text: {{this.annotationToEdit.selectedText}}</p>
 			<form [formGroup]="editAnnotationForm" (keyup.enter)="saveEdit()">
 				<div>
 					<label for="annotation">Annotation Text</label>

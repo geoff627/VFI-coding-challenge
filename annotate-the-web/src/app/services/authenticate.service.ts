@@ -85,6 +85,14 @@ export class AuthenticateService {
 		this.userEmailSubject.next(this.userEmail);
 	}
 
+	isLoggedIn(): boolean {
+		return !this.userEmail ? false : true;
+	}
+
+	getCurrentUserEmail(): string {
+		return this.userEmail;
+	}
+
 	private saveUserToLocalStorage(user: Credentials) {
 		if(!user || !user.email || !user.password) {
 			return;

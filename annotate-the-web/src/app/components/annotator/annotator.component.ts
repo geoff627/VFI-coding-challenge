@@ -30,7 +30,7 @@ export class AnnotatorComponent implements OnInit, AfterViewInit {
 			map(selection => {
 				const {anchorNode: {parentElement}} = selection;
 				return {
-					id: new Date().getUTCSeconds(),
+					id: +`${Math.ceil(Math.random()*100)}${new Date().getUTCSeconds()}${new Date().getUTCDate()}`,
 					selectedText: selection.anchorNode.textContent.substring(
 						selection.focusOffset,
 						selection.anchorOffset),

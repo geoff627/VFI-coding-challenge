@@ -1,5 +1,8 @@
 .page-text-container {
 	display: flex;
+	height: 100vh;
+	background: var(--annot-color-light-tint);
+	background: linear-gradient(to bottom,  var(--annot-color-medium-tint) 0%, var(--annot-color-light-tint) 21%, var(--annot-color-light-tint) 50%, var(--annot-color-light-tint) 81%, var(--annot-color-medium-tint) 100%);
 
 	.text-content-container {
 		display: flex;

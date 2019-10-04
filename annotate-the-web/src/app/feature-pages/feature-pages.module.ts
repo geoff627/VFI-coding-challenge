@@ -9,6 +9,7 @@ import { EditAnnotationComponent } from './edit-annotation/edit-annotation.compo
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
 	{
@@ -18,6 +19,7 @@ const routes: Routes = [
 	{
 		path: ":id/edit",
 		component: EditAnnotationComponent,
+		canActivate: [AuthGuard],
 	},
 	{
 		path: "login",

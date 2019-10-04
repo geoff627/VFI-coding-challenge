@@ -18,6 +18,10 @@ export class EditAnnotationComponent implements OnInit {
   ngOnInit() {
 		this.annotationId = +this.route.snapshot.paramMap.get("id");
 		this.annotationToEdit = this.annotationSvc.getAnnotationById(this.annotationId);
+		if(!this.annotationToEdit) {
+			this.router.navigateByUrl('home');
+			return;
+		}
 		this.editAnnotationForm = this.formBuilder.group({
 			annotation: ['', []]
 		});
@@ -36,6 +40,9 @@ export class EditAnnotationComponent implements OnInit {
 	}
 
 	handleDelete() {
+		if(!this.annotationToEdit) {
+			return;
+		}
 		this.annotationToEdit.annotation = this.editAnnotationForm.controls['annotation'].value;
 		this.annotationSvc.deleteAnnotation(this.annotationToEdit);
 		this.router.navigateByUrl('home');

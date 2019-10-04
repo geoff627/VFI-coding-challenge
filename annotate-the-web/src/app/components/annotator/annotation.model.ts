@@ -4,6 +4,6 @@ export interface Annotation {
 	selectedText: string;
 	topPosition: number;
 	leftPosition: number;
-	name: string;
+	email: string;
 	date: Date;
 }

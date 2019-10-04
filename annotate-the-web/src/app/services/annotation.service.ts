@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Annotation } from '../components/annotator/annotation.model';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { AuthenticateService } from './authenticate.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,39 +9,43 @@ import { Subject, BehaviorSubject } from 'rxjs';
 export class AnnotationService {
 	annotationListStorageKey = 'storedAnnotations';
 	listOfAnnotations: Array<Annotation> = [];
+	fullListOfAnnotations: Array<Annotation> = [];
 	private annotationListSubject = new BehaviorSubject<Array<Annotation>>([]);
 	annotationListChanges$ = this.annotationListSubject.asObservable();
-	
-	constructor() {
-		if(!this.listOfAnnotations || this.listOfAnnotations.length === 0) {
-			this.listOfAnnotations = this.getAnnotationListFromLocalStorage();
-			if(this.listOfAnnotations.length > 0) {
-				this.notifyAnnotationListChange();
+
+	constructor(private authSvc: AuthenticateService) {
+		if(authSvc.isLoggedIn) {
+			if(!this.listOfAnnotations || this.listOfAnnotations.length === 0) {
+				this.refreshAnnotationsList();
 			}
 		}
 	}
 
 	addAnnotation(annotation: Annotation) {
 		if(!annotation) {return;}
-		this.listOfAnnotations.push(annotation);
-		this.saveAnnotationListToLocalStorage(this.listOfAnnotations);
-		this.notifyAnnotationListChange();
+		if(this.authSvc.isLoggedIn()) {
+			annotation.email = this.authSvc.getCurrentUserEmail();
+			this.listOfAnnotations.push(annotation);
+			this.fullListOfAnnotations.push(annotation);
+			this.saveAnnotationListToLocalStorage(this.fullListOfAnnotations);
+			this.notifyAnnotationListChange();
+		}
 	}
 
 	getAnnotationById(annotationId: number): Annotation {
-		return this.listOfAnnotations.find(a => a.id === annotationId)
+		return this.fullListOfAnnotations.find(a => a.id === annotationId)
 	}
 
 	editAnnotation(editedAnnotation: Annotation): void {
-		this.listOfAnnotations = this.listOfAnnotations.map(a => a.id !== editedAnnotation.id ? a : {...editedAnnotation});
-		this.saveAnnotationListToLocalStorage(this.listOfAnnotations);
-		this.notifyAnnotationListChange();
+		this.fullListOfAnnotations = this.fullListOfAnnotations.map(a => a.id !== editedAnnotation.id ? a : {...editedAnnotation});
+		this.saveAnnotationListToLocalStorage(this.fullListOfAnnotations);
+		this.refreshAnnotationsList();
 	}
 
 	deleteAnnotation(annotationToDelete: Annotation): void{
-		this.listOfAnnotations = this.listOfAnnotations.filter(a => a.id !== annotationToDelete.id);
-		this.saveAnnotationListToLocalStorage(this.listOfAnnotations);
-		this.notifyAnnotationListChange();
+		this.fullListOfAnnotations = this.fullListOfAnnotations.filter(a => a.id !== annotationToDelete.id);
+		this.saveAnnotationListToLocalStorage(this.fullListOfAnnotations);
+		this.refreshAnnotationsList();
 	}
 
 	notifyAnnotationListChange() {
@@ -51,7 +56,23 @@ export class AnnotationService {
 		localStorage.setItem(this.annotationListStorageKey, JSON.stringify([...list]));
 	}
 
-	getAnnotationListFromLocalStorage(): Array<Annotation> {
+	refreshAnnotationsList() {
+		this.fullListOfAnnotations = this.getAnnotationListFromLocalStorage();
+		this.listOfAnnotations = this.getAnnotationsByUserFromLocalStorage(this.authSvc.getCurrentUserEmail());
+		this.notifyAnnotationListChange();
+	}
+
+	clearInMemoryAnnotations() {
+		this.listOfAnnotations.splice(0);
+		this.fullListOfAnnotations.splice(0);
+		this.notifyAnnotationListChange();
+	}
+
+	private getAnnotationsByUserFromLocalStorage(userEmail: string) {
+		return this.getAnnotationListFromLocalStorage().filter(a => a.email === userEmail);
+	}
+
+	private getAnnotationListFromLocalStorage(): Array<Annotation> {
 		const localListString = localStorage.getItem(this.annotationListStorageKey);
 		const localList: Array<Annotation> = JSON.parse(localListString);
 		const returnedList = !localList ? [] : [...localList];

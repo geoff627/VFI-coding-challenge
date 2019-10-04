@@ -1,13 +1,10 @@
 .app-content-container {
 	display: flex;
 	justify-content: center;
-	background: var(--annot-color-light-tint);
-	background: linear-gradient(to bottom,  var(--annot-color-medium-tint) 0%, var(--annot-color-light-tint) 21%, var(--annot-color-light-tint) 50%, var(--annot-color-light-tint) 81%, var(--annot-color-medium-tint) 100%);
 }
 
 @media (min-width: 768px) {
 	.app-content-container {
-		padding: 2rem;
 		height: 100vh;
 	}
 }
