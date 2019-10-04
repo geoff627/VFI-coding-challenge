@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
 				if(!response) {
 					this.showAlreadyExistsError = true;
 				} else {
-					this.showAlreadyExistsError = false;
 					this.router.navigateByUrl('home');
 				}
 			})

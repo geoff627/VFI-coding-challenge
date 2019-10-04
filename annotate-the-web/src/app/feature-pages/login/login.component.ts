@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
 				if(!response) {
 					this.showLoginError = true;
 				} else {
-					this.showLoginError = false;
 					this.router.navigateByUrl('home');
 				}
 			})

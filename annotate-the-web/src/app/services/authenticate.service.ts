@@ -56,9 +56,23 @@ export class AuthenticateService {
 		});
 	}
 
-	resetPassword(credentials: Credentials) {
-
-		this.notifyUserEmailChange();
+	resetPassword(credentials: Credentials, newPassword: string): Observable<boolean> {
+		return new Observable<boolean>(observer => {
+			const existingUser = this.getUserFromLocalStorage(credentials);
+			if(!existingUser) {
+				observer.next(false);
+			} else if (existingUser.password !== credentials.password) {
+				observer.next(false);
+			} else {
+				credentials.password = newPassword;
+				this.userEmail = credentials.email;
+				this.setCurrentUser(this.userEmail);
+				this.updateAndSaveUserToLocalStorage(credentials);
+				this.notifyUserEmailChange();
+				observer.next(true);
+			}
+			observer.complete();
+		});
 	}
 
 	logout() {
@@ -78,6 +92,19 @@ export class AuthenticateService {
 		const currentList = this.getUserListFromLocalStorage();
 		const listToSave = !currentList ? [user] : [...currentList, user];
 		localStorage.setItem(this.userListKey, JSON.stringify(listToSave));
+	}
+
+	private updateAndSaveUserToLocalStorage(user: Credentials) {
+		if(!user || !user.email || !user.password) {
+			return;
+		}
+		const currentList = this.getUserListFromLocalStorage();
+		if(!currentList || currentList.length === 0) {
+			return;
+		} else {
+			const listToSave = currentList.map(u => u.email !== user.email ? u : user);
+			localStorage.setItem(this.userListKey, JSON.stringify(listToSave));
+		}
 	}
 
 	private setCurrentUser(userEmail: string) {
